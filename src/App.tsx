@@ -1,24 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppHeader from "AppHeader";
+import 'App.css';
+import styled from 'styled-components';
+import { MyButton } from "components/MyButton";
+
+interface ButtonProps {
+    primary?: boolean;
+}
+
+const Button = styled.button<ButtonProps>`
+  background: ${(props: ButtonProps) => (props.primary ? 'palevioletred' : 'white')};
+  color: ${(props: ButtonProps) => (props.primary ? 'white' : 'palevioletred')};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  
+  &:hover {
+    background-color: ${props => (props.primary ? '#D02090' : 'lightgrey')};
+  }
+`;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppHeader />
+      <Button primary>Primary Button</Button>
+      <Button>Default button</Button>
+      <MyButton />
     </div>
   );
 }
