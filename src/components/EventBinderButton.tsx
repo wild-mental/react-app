@@ -6,7 +6,7 @@ const handleClickEx = () => {
     console.log('Button is clicked!(함수 외부에 핸들러 선언)');
 };
 
-function MyButton() {
+function EventBinderButton() {
     // 함수 내부에 선언한 이벤트 핸들러습
     const handleClickIn = () => {
         console.log('Button is clicked!(함부 내부에 핸들러 선언)');
@@ -22,4 +22,4 @@ function MyButton() {
     );
 }
 
-export { MyButton };
+export default EventBinderButton;

@@ -1,14 +1,14 @@
 import React from 'react';
-import AppHeader from "AppHeader";
+// import AppHeader from "AppHeader";
 import 'App.css';
 import styled from 'styled-components';
-import { MyButton } from "components/MyButton";
+import EventBinderButton from "components/EventBinderButton";
 
 interface ButtonProps {
     primary?: boolean;
 }
 
-const Button = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonProps>`
   background: ${(props: ButtonProps) => (props.primary ? 'palevioletred' : 'white')};
   color: ${(props: ButtonProps) => (props.primary ? 'white' : 'palevioletred')};
   font-size: 1em;
@@ -26,10 +26,10 @@ function App() {
   return (
     <div className="App">
       {/*<AppHeader />*/}
-      <Button primary>Primary Button</Button>
-      <Button>Default button</Button>
+      <StyledButton primary>Primary Button</StyledButton>
+      <StyledButton>Default button</StyledButton>
       <br/><hr/>
-      <MyButton />
+      <EventBinderButton />
     </div>
   );
 }
