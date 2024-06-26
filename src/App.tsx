@@ -25,9 +25,10 @@ const Button = styled.button<ButtonProps>`
 function App() {
   return (
     <div className="App">
-      <AppHeader />
+      {/*<AppHeader />*/}
       <Button primary>Primary Button</Button>
       <Button>Default button</Button>
+      <br/><hr/>
       <MyButton />
     </div>
   );
