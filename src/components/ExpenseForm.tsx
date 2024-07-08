@@ -1,8 +1,9 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
+import {ExpenseItemProps} from "./ExpenseItem";
 
 interface ExpenseFormProps {
     // 외부에서 Form 을 정의할 때, save 동작을 props 에 담아서 수신하는 구조
-    onSaveExpense: (expense: ExpenseData) => void;
+    onSaveExpense: (expense: ExpenseItemProps) => void;
 }
 
 // 외부에서 Form 을 정의할 때, save 동작을
@@ -30,6 +31,11 @@ const ExpenseForm: React.FC<ExpenseFormProps> =
                         // 필드가 업데이트 되었을 때 해당 필드만 변경하고
                         // 기존 상태값은 '...' 분해 구문으로 처리
                         [name]: value
+                        // 계산된 속성 이름 (Computed Property Names)
+                        // 객체 리터럴에서 대괄호([])를 사용하여 속성 이름을 동적으로 지정
+                        // 동적 평가: [key] 부분은 대괄호 안의 표현식을 평가하여 문자열 결과를 얻음
+                        // 속성 이름 지정: 그 문자열 결과가 객체의 속성 이름으로 사용
+                        // 객체 생성 및 업데이트: 객체 리터럴 내에서 동적으로 속성 이름을 지정, 기존 객체의 속성을 동적으로 업데이트
                     }
                 )
             );
@@ -40,10 +46,10 @@ const ExpenseForm: React.FC<ExpenseFormProps> =
 
             // 아래 내용은 state 가 변경된 것을 그대로 데이터에 반영해줌
             // 업데이트 되며 관리되고 있던 state 값을 다시 후속 동작의 input 데이터로 사용하는 패턴
-            const expense: ExpenseData = {
+            const expense: ExpenseItemProps = {
                 title: userInput.title,
                 price: userInput.price,
-                date: userInput.date,
+                date: new Date(userInput.date),
             };
 
             // ExpenseForm 컴포넌트가 외부에서 수신하는 함수 props 를 그대로 호출
